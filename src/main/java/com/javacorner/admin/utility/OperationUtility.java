@@ -48,8 +48,8 @@ public class OperationUtility {
         //updateCourse(courseDao);
         //removeCourse(courseDao);
         //fetchCourses(courseDao);
-        assignStudentsToCourses(courseDao, studentDao); // we are doing it in the course operations because the coursse is the owning side of the relationship
-        //fetchCoursesForStudent(courseDao);
+        //assignStudentsToCourses(courseDao, studentDao); // we are doing it in the course operations because the coursse is the owning side of the relationship
+        fetchCoursesForStudent(courseDao);
     }
 
 
