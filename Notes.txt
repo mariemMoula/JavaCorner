@@ -1,0 +1,23 @@
+**************THE STEPS I FOLLOWED TO CREATE THE APPLICATION****************
+
+- STARTING WITH THE APPLICATION CONCEPTION
+
+- CREATING THE PROJECT STRUCTURE AND ADDING THE NECESSARY DEPENDECIES
+
+- CREATING THE ENTITIES
+
+- ASSIGNING THE RELATIONSHIPS BETWEEN THE ENTITIES FOLLOWING THE CONCEPTIONS
+
+- ADDING THE NECESSARY METHODS IN THE OWNING SIDE OF THE RELATIONSHIP ( ADDING ROLES TO A USER / ASSIGNING A COIURSE TO A STUDENT ...°
+
+- CREATING THE DAO AND AADING THE QUERY METHODS THAT WE NEED TO USE IN THE SERVICE LAYER
+
+- MODIFYING THE APPLICATIONS.PROPERTIES FILE TO CONNECT TO THE DATABASE
+
+- TESTING THE CRUD OPERATIONS WITH THE OPERATIONUTILITY CLASS AND USING THE DAOS AND THE LOGIC METHODS
+
+-   AFTER TESTING THE CRUD OPERATIONS WITH THE OPERATIONUTILITY CLASS , WE WILL BE TESTING THE CRUD OPERATIONS WITH THE API.
+-When we were using the OperationUtility class, we tested our CRUD  operations without API , and the return type of the DAO classes was a list ,
+but , if we need to make a pagination in the front end application , we need another type   other than the list , which is the Page type ,
+so we need to change the return type of the DAO classes to be Page type so that we can  the result in pages , we insert the size and the page number.
+A s a result , we will be getting a list of courses with .size with the sizer we specified as well as the page number which was sent in the request as an arguement .

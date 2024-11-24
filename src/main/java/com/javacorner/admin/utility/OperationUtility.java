@@ -1,3 +1,5 @@
+
+/*
 package com.javacorner.admin.utility;
 
 import com.javacorner.admin.dao.*;
@@ -131,7 +133,6 @@ public class OperationUtility {
 
         Instructor instructor1 = new Instructor("instructor1FN", "instructor1LN", "Experienced Instructor", user1);
         instructorDao.save(instructor1);
-        /***************************************************************************/
         User user2 = new User("pass2", "instructorUser2@gmail.com");
         userDao.save(user2); // we need to save the user first to get the id
         user2.assignRoleToUser(role); // we need to assign the role to the user
@@ -171,7 +172,6 @@ public class OperationUtility {
 
         Student student1 = new Student("master", "student1LN", "student1FN", user1);
         studentDao.save(student1);
-        /****************************************************/
         User user2 = new User("pass2", "sdtUser2@gmail.com");
         userDao.save(user2);
         user2.assignRoleToUser(role);
@@ -253,3 +253,5 @@ public class OperationUtility {
     }
 
 }
+*/
+

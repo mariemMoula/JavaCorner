@@ -1,14 +1,33 @@
 package com.javacorner.admin;
 
-import com.javacorner.admin.dao.*;
-import com.javacorner.admin.utility.OperationUtility;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaCornerAdminApplication implements CommandLineRunner {
+public class JavaCornerAdminApplication {
+
+
+    public static void main(String[] args) {
+        SpringApplication.run(JavaCornerAdminApplication.class, args);
+    }
+
+}
+
+
+
+
+
+/*
+import com.javacorner.admin.dao.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import com.javacorner.admin.utility.OperationUtility;
+
+    To use this part of the code add the implements CommandLineRunner  is the  JavaCornerAdminApplication
+
+
+
     @Autowired
     private UserDao userDao ;
 
@@ -24,10 +43,6 @@ public class JavaCornerAdminApplication implements CommandLineRunner {
     @Autowired
     private RoleDao roleDao ;
 
-    public static void main(String[] args) {
-        SpringApplication.run(JavaCornerAdminApplication.class, args);
-    }
-
     // Now when our application starts, the run method will be executed.
     @Override
     public void run(String... args) throws Exception {
@@ -39,11 +54,12 @@ public class JavaCornerAdminApplication implements CommandLineRunner {
   //      OperationUtility.studentsOperations(userDao, roleDao, studentDao);
         OperationUtility.coursesOperations(courseDao, instructorDao, studentDao);
 
-
-
-
     }
-}
+
+
+*/
+
+
 /*, you cannot execute custom code directly within the SpringApplication.run(JavaCornerAdminApplication.class, args); line.
  This line is responsible for starting the Spring Boot application and initializing the application context.
 To execute custom code after the application has started, you should override the run method of the CommandLineRunner interface, as shown in your current implementation.
