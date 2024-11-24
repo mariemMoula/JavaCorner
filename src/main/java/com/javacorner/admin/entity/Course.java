@@ -42,6 +42,13 @@ public class Course {
     public Course() {
     }
 
+    public Course(String courseName, String courseDescription, String courseDuration, Instructor instructor) {
+        this.courseName = courseName;
+        this.courseDescription = courseDescription;
+        this.courseDuration = courseDuration;
+        this.instructor = instructor;
+    }
+
     public void assignStudentToCourse(Student student) {
 
         this.students.add(student);
