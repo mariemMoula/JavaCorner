@@ -25,7 +25,7 @@ public interface CourseDao extends JpaRepository<Course, Long>{
     @Query(value ="select * from courses as c where c.course_id not in (select e.course_id from enrolled_in as e where e.student_id=:studentId )", nativeQuery = true)
     Page<Course> getNonEnrolledInCoursesByStudentId(@Param("studentId") Long studentId,Pageable pageable);
 
-    // Get Courses by Instructor Id
+    // Get Courses by InstructorId
     @Query(value = "select c from Course as c where c.instructor.instructorId=:instructorId")
     Page<Course> getCoursesByInstructorId(@Param("instructorId") Long instructorId, Pageable pageable);
 
