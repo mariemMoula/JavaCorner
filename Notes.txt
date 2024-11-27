@@ -21,3 +21,19 @@
 but , if we need to make a pagination in the front end application , we need another type   other than the list , which is the Page type ,
 so we need to change the return type of the DAO classes to be Page type so that we can  the result in pages , we insert the size and the page number.
 A s a result , we will be getting a list of courses with .size with the sizer we specified as well as the page number which was sent in the request as an arguement .
+
+- CREATING THE DTOs AND THE MAPPERS TO CONVERT THE ENTITIES TO THE DTOs AND VICE VERSA
+We use DTOs(to directly  select what will be sent to the front end application )  to transfer the data between the front end and the back end , and we use the mappers to convert the entities to the DTOs and vice versa.
+For example , the front end applications , sends a request to the back end to get the list of courses , the back end will get the list of courses from the database , and then it will convert the list of courses to a list of courseDTOs and then it will send the list of courseDTOs to the front end application.
+Or the front end appliction sends the DTOs as an input , then we convert it into the entity using the help of the mappers
+NOTE : DTOs (Data Transfer Objects) often include only getters and setters to keep them simple and focused on data transfer
+
+- CREATING THE SERVICE LAYER AND ADDING THE BUSINESS LOGIC METHODS
+How to Decide: DAO vs Service
+Question	Answer: DAO or Service?
+Does it involve basic CRUD or direct queries?	DAO
+Does it combine multiple database operations?	Service
+Does it manage relationships between entities?	Service
+Does it implement business rules/validations?	Service
+Is it reusable across multiple business operations?	DAO
+Does it modify an entity or its relationships?	Service

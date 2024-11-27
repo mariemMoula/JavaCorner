@@ -17,7 +17,7 @@ public interface InstructorDao extends JpaRepository<Instructor, Long> {
 
     // No need for pagination
     @Query(value = "select i from Instructor i where i.user.email = :email")
-    List<Instructor> findInstructorByEmail(@Param("email") String email);
+    Instructor findInstructorByEmail(@Param("email") String email);
 
 
 
