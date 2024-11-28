@@ -7,7 +7,7 @@ public interface UserService {
 
     User createUser(String email, String password);
 
-    void asssignRoleToUser(String email, String roleName);
+    void assignRoleToUser(String email, String roleName);
     //We did not create a methode to remove user because it won't be needed since the we set the cascade type on the relationship between the user & the instructor and the student & user to cascade type remove
 }
 /**

@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 
 @Transactional
 @Service
-public class UserServiceImpl implements  UserService{
+public class UserServiceImpl implements UserService {
 
 
-    private UserDao userDao ;
-    private RoleDao roleDao ;
+    private UserDao userDao;
+    private RoleDao roleDao;
 
-    public UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao, RoleDao roleDao) {
         this.userDao = userDao;
         this.roleDao = roleDao;
     }
@@ -28,15 +28,28 @@ public class UserServiceImpl implements  UserService{
 
     @Override
     public User createUser(String email, String password) {
-        return userDao.save(new User(email,password));
+        return userDao.save(new User(email, password));
     }
 
     @Override
-    public void asssignRoleToUser(String email, String roleName) {
-        User user = userDao.findByEmail(email) ;
-        Role role = roleDao.findByName(roleName);
-        user.assignRoleToUser(role);
-        //userDao.save(user);
+    public void assignRoleToUser(String email, String roleName) {
+        System.out.println("Searching for user with email: " + email);
+        User user = userDao.findByEmail(email);
+        System.out.println("Found user: " + (user != null ? user.getEmail() : "null"));
 
+        System.out.println("Searching for role with name: " + roleName);
+        Role role = roleDao.findByName(roleName);
+        System.out.println("Found role: " + (role != null ? role.getName() : "null"));
+
+        if (user == null) {
+            throw new IllegalArgumentException("User with email " + email + " not found");
+        }
+        if (role == null) {
+            throw new IllegalArgumentException("Role with name " + roleName + " not found");
+        }
+        user.assignRoleToUser(role);
+        userDao.save(user);
     }
+
 }
+

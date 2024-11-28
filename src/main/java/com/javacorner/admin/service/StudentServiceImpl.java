@@ -50,7 +50,7 @@ public class StudentServiceImpl implements StudentService{
     public StudentDTO createStudent(StudentDTO studentDTO) {
         // To create a student , we need to create a user , and for that we will use the user service
         User user = userService.createUser(studentDTO.getUser().getEmail(),studentDTO.getUser().getPassword());
-        userService.asssignRoleToUser(studentDTO.getUser().getEmail(),"Student");
+        userService.assignRoleToUser(studentDTO.getUser().getEmail(),"Student");
         Student newStudent = studentMpper.fromDTOToStudent(studentDTO);
         newStudent.setUser(user);
         Student savedUser=studentDao.save(newStudent);
