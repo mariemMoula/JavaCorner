@@ -31,11 +31,11 @@ public class CourseDTO {
         this.courseDescription = courseDescription;
     }
 
-    public String getCourseDuraton() {
+    public String getCourseDuration() {
         return courseDuraton;
     }
 
-    public void setCourseDuraton(String courseDuraton) {
+    public void setCourseDuration(String courseDuraton) {
         this.courseDuraton = courseDuraton;
     }
 

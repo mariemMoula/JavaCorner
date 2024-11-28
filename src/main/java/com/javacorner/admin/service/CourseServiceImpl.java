@@ -11,6 +11,7 @@ import com.javacorner.admin.entity.Student;
 import com.javacorner.admin.mapper.CourseMapper;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -26,8 +27,8 @@ public class CourseServiceImpl implements CourseService{
     private CourseMapper courseMapper;
     private InstructorDao  instructorDao;
     private StudentDao studentDao;
-
-    public CourseServiceImpl(CourseDao courseDao) {
+    @Autowired
+    public CourseServiceImpl(CourseDao courseDao,CourseMapper courseMapper ,InstructorDao instructorDao,StudentDao studentDao) {
         this.courseDao = courseDao;
         this.courseMapper= courseMapper;
         this.instructorDao=instructorDao;
@@ -52,6 +53,7 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public CourseDTO updateCourse(CourseDTO courseDTO) {
         Course loadedCourse = courseDao.findById(courseDTO.getCourseId()).orElseThrow(()-> new EntityNotFoundException("Course with ID "+courseDTO.getCourseId()+" not found"));
+        //The instructor will be found thanks to its ID , that what we will recieve in  request body
         Instructor instructor = instructorDao.findById(courseDTO.getInstructorDTO().getInstructorId()).orElseThrow(()-> new EntityNotFoundException("Instructor with ID "+courseDTO.getInstructorDTO().getInstructorId()+" not found"));
         Course course = courseMapper.fromCourseDTOToCourse(courseDTO);
         course.setInstructor(instructor);
@@ -70,6 +72,7 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public void assignStudentToCourse(Long courseId, Long studentId) {
+        //We are using the student ID because that what will be given to us in the request body
         Student student = studentDao.findById(studentId).orElseThrow(()-> new EntityNotFoundException("Student with ID "+studentId+" not found"));
         //Course course = courseDao.findById(courseId).orElseThrow(()-> new EntityNotFoundException("Course with ID "+courseId+" not found"));
         Course course = loadCourseById(courseId);

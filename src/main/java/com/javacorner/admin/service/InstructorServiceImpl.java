@@ -75,6 +75,7 @@ public class InstructorServiceImpl implements InstructorService{
         Instructor instructor = instructorMapper.fromDTOToInstructor(instructorDTO);
         instructor.setUser(user);
         Instructor savedInstructor = instructorDao.save(instructor);
+        userService.assignRoleToUser(user.getEmail(),"Instructor");
         return instructorMapper.fromInstructorToDTO(savedInstructor);
     }
 

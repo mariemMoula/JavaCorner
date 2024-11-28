@@ -37,3 +37,7 @@ Does it manage relationships between entities?	Service
 Does it implement business rules/validations?	Service
 Is it reusable across multiple business operations?	DAO
 Does it modify an entity or its relationships?	Service
+
+- Creating a runner class to test the services
+
+- Creating the Controllers
