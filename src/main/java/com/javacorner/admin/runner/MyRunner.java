@@ -12,7 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-//This class if for testing purposes only
+//This class if for testing and initialization  purposes only
 @Component
 public class MyRunner implements CommandLineRunner {
     /**
@@ -38,9 +38,8 @@ public class MyRunner implements CommandLineRunner {
         createCourses();
         StudentDTO student =createStudent();
         assignCourseToStudent(student);
+        createStudents();
     }
-
-
 
 
     private void createRoles() {
@@ -101,5 +100,20 @@ public class MyRunner implements CommandLineRunner {
         courseService.assignStudentToCourse(1L, student.getStudentId());
 
     }
+
+    private void createStudents() {
+        for (int i = 0; i < 11; i++) {
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.setFirstName("Student" + i + "FN");
+            studentDTO.setLastName("Student" + i + "LN");
+            studentDTO.setLevel("Beginner");
+            UerDTO userDTO = new UerDTO();
+            userDTO.setEmail("student" + i + "@gmail.com");
+            userDTO.setPassword("Student" + i + "Password");
+            studentDTO.setUser(userDTO);
+            studentService.createStudent(studentDTO);
+        }
+    }
+
 
 }

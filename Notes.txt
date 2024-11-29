@@ -41,3 +41,16 @@ Does it modify an entity or its relationships?	Service
 - Creating a runner class to test the services
 
 - Creating the Controllers
+
+- Testing the controllers with postman
+
+- Adding swagger dependencies and accessing this link : http://localhost:8088/swagger-ui/index.html
+
+- Securing the backend
+-- Adding the spring security dependencies
+-- Encoding password in the db
+-- Adding the security configurartion for the project
+Key Points
+Stateless: Session management is disabled; all user data is handled via JWT.
+JWT Validation: Each request validates the token to ensure security.
+Security Configuration: Configures Spring Security to allow public access for login/registration and secure other endpoints.
