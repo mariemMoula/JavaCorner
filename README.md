@@ -20,4 +20,4 @@ Scolarity  Management is a Spring Boot application designed to manage user authe
 - Maven
 
 ## Project Structure
-src/ ├── main/ │ ├── java/ │ │ └── com/ │ │ └── javacorner/ │ │ └── admin/ │ │ ├── entity/ │ │ ├── security/ │ │ └── service/ │ └── resources/ │ └── application.properties └── test/
+src/ ├── main/ │ ├── java/ │ │ └── com/ │ │ └── scolatity_management/ │ │ └── admin/ │ │ ├── entity/ │ │ ├── security/ │ │ └── service/ │ └── resources/ │ └── application.properties └── test/
