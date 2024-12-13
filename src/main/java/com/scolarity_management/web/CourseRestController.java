@@ -45,7 +45,7 @@ public class CourseRestController {
     }
 
     @PostMapping("/{courseId}/enroll/students/{studentId}")
-    @PreAuthorize("hasAnyRole('admin', 'instructor')")
+    @PreAuthorize("hasAnyRole('admin', 'instructor', 'student')")
     public void enrollStudentInCourse(@PathVariable Long courseId,@PathVariable Long studentId){
         courseService.assignStudentToCourse(courseId,studentId);
     }

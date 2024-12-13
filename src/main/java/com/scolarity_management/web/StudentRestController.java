@@ -58,6 +58,7 @@ public class StudentRestController {
     }
 
     @GetMapping("/{studentId}/courses")
+    @PreAuthorize("hasAnyRole('admin', 'instructor')")
     public Page<CourseDTO> getStudentCourses(@PathVariable Long studentId,
                                              @RequestParam(name="page",defaultValue = "0")int page,
                                              @RequestParam(name="size",defaultValue = "5")int size){
@@ -66,12 +67,14 @@ public class StudentRestController {
     }
 
     @GetMapping("/{studentId}/other-courses")
+    @PreAuthorize("hasAnyRole('admin', 'instructor', 'student')")
     public Page<CourseDTO> getStudentOtherCourses(@PathVariable Long studentId,
                                                   @RequestParam(name="page",defaultValue = "0")int page,
                                                   @RequestParam(name="size",defaultValue = "5")int size){
         return courseService.fetchNotEnrolledCoursesForStudent(studentId,page,size);
     }
     @GetMapping("/find")
+    @PreAuthorize("hasAnyRole('admin', 'instructor')")
     public StudentDTO findStudentByEmail(@RequestParam(name="email")String email){
         return studentService.loadStudentByEmail(email,0,1);
     }

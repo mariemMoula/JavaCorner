@@ -47,8 +47,11 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
             DecodedJWT decodedJWT = jwtVerifier.verify(accessToken);
             // Extract the email and roles from the claims and create an authentication object and set it in the security context holder
             String email = decodedJWT.getSubject();
-            Collection<GrantedAuthority> authorities = new ArrayList<>();
+            /*By converting roles to GrantedAuthority, you ensure that the roles can be seamlessly integrated into Spring Security's authentication and authorization mechanisms.
+            */
+            Collection<GrantedAuthority> authorities = new ArrayList<>(); // an array for the roles
             decodedJWT.getClaim("roles").asList(String.class).forEach(role -> authorities.add(new SimpleGrantedAuthority("ROLE_"+role)));
+
             // Create an authentication object and set it in the security context holder to authenticate the user
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email,
                     null, authorities);
